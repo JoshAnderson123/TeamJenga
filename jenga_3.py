@@ -287,6 +287,12 @@ def delete_gazebo_models():
         resp_delete = delete_model("brick4")
         resp_delete = delete_model("brick5")
         resp_delete = delete_model("brick6")
+        resp_delete = delete_model("brick7")
+        resp_delete = delete_model("brick8")
+        resp_delete = delete_model("brick9")
+        resp_delete = delete_model("brick10")
+        resp_delete = delete_model("brick11")
+        resp_delete = delete_model("brick12")
     except rospy.ServiceException, e:
         rospy.loginfo("Delete Model service call failed: {0}".format(e))
 
