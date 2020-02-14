@@ -338,7 +338,9 @@ def main():
     for layer in [1, 2, 3, 4]: # 4 vertical layers in the tower
         for brick in [1, 2, 3]: # 3 bricks in each layer
 
-            if mode == "sim": spawn_gazebo_brick(brick_pose, calc_brick_id(layer, brick)) # Spawns brick and creates a unique id
+            brick_id = calc_brick_id(layer, brick)
+            
+            if mode == "sim": spawn_gazebo_brick(brick_pose, brick_id) # Spawns brick and creates a unique id
 
             println("Picking...")
 
