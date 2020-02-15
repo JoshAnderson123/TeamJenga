@@ -287,7 +287,7 @@ def main():
     brick_pose       = create_pose(0.5897,          0.3333,         0.8179 - off, None )
     pick_pose        = create_pose(0.5896,          0.0,            0.1836 - off, quat2)
 
-    place_pose = {}
+    place_pose = {} # Poses for placing each brick (1-12)
 
     place_pose["1"]  = create_pose(0.5896,          0.0,            0.1836 - off, quat1)
     place_pose["2"]  = create_pose(0.6596 - 1*trim, 0.0,            0.1836 - off, quat1)
@@ -305,14 +305,14 @@ def main():
     place_pose["11"] = create_pose(0.6596,          0.005 - 1*trim, 0.4440 - off, quat2)
     place_pose["12"] = create_pose(0.6596,          0.070 - 2*trim, 0.4440 - off, quat2)
 
-    clear_pose = {}
+    clear_pose = {} # Poses used to clear the tower for each layer (1-4)
     
     clear_pose["1"]  = create_pose(0.8597,          0.3333,         0.284 - off,  quat2)
     clear_pose["2"]  = create_pose(0.8597,          0.3333,         0.370 - off,  quat2)
     clear_pose["3"]  = create_pose(0.8597,          0.3333,         0.456 - off,  quat2)
     clear_pose["4"]  = create_pose(0.5897,          0.3333,         0.542 - off,  quat2)
 
-    prep_pose = {}
+    prep_pose = {} # Preparation poses used to help guide DE NIRO for the upper layers (3-4)
 
     prep_pose["3"]   = create_pose(0.8597,          0.3333,         0.357 - off,  quat2)
     prep_pose["4"]   = create_pose(0.5896,          0.3333,         0.444 - off,  quat2)
@@ -343,15 +343,12 @@ def main():
             if mode == "sim": spawn_gazebo_brick(brick_pose, brick_id) # Spawns brick and creates a unique id
 
             println("Picking...")
-
             left_pnp.pick(pick_pose) # Pick brick up from collection site
-
             if layer in [3, 4]: left_pnp.move_to(left_pnp.ik_request(prep_pose[str(layer)])) # Intermediate preparation pose
-
             println("Placing...")
 
             left_pnp.place(place_pose[brick_id]) # Place brick on tower
-            rospy.sleep(1.0)
+            rospy.sleep(1.0) # For stability
 
             if layer in [2, 3, 4]: left_pnp.move_to(left_pnp.ik_request(clear_pose[str(layer)]))  # Intermediate clear pose
 
