@@ -242,7 +242,7 @@ def create_pose(pos_x, pos_y, pos_z, quat):
     pose.position.x = pos_x
     pose.position.y = pos_y
     pose.position.z = pos_z
-    if quat != None:
+    if quat[0] != None:
         pose.orientation.x = quat[0]
         pose.orientation.y = quat[1]
         pose.orientation.z = quat[2]
@@ -297,7 +297,7 @@ def main():
 
     left_pose        = create_pose(0.5897,          0.3333,         0.3000 - off,           quat1)
     right_pose       = create_pose(0.5797,         -0.3833,         0.2137 - off,           quat1)
-    brick_pose       = create_pose(0.5897,          0.3333,         0.8179 - off,           None )
+    brick_pose       = create_pose(0.5897,          0.3333,         0.8179 - off,           [None])
     pick_pose        = create_pose(0.5896,          0.3333,         0.1836 - off,           quat2)
 
     place_pose = {} # Poses for placing each brick (1-12)
