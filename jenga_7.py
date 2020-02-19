@@ -336,7 +336,7 @@ def main():
 
     ### ACTION SEQUENCE ###
 
-    mode = "sim" # sim = gazebo simulation | real = real world
+    world_mode = "sim" # sim = gazebo simulation | real = real world
 
     # Initialise pick and place
     left_pnp = PickAndPlace('left', hover_distance)
@@ -347,7 +347,7 @@ def main():
     right_pnp.move_to_start(ik_robust(right_pnp, right_pose))
 
     # Spawn table
-    if mode == "sim": spawn_gazebo_table()
+    if world_mode == "sim": spawn_gazebo_table()
 
     # Tower pick and place sequence
     for layer in [1, 2, 3, 4]: # 4 vertical layers in the tower
@@ -357,7 +357,7 @@ def main():
             brick_id = str(brick_id)
             print("Pick and place for brick {}/12 (layer {}/4, brick {}/3)".format(brick_id, layer, brick))
             
-            if mode == "sim": spawn_gazebo_brick(brick_pose, brick_id) # Spawns brick and creates a unique id
+            if world_mode == "sim": spawn_gazebo_brick(brick_pose, brick_id) # Spawns brick and creates a unique id
 
             print("Picking...")
             left_pnp.pick(pick_pose) # Pick brick up from collection site
@@ -376,11 +376,8 @@ def main():
     rospy.sleep(10.0)
 
     # Delete all models
-    delete_gazebo_models()
-
-    #rospy.on_shutdown(delete_gazebo_models)
+    if world_mode == "sim": delete_gazebo_models()
 
 
 if __name__ == '__main__':
     sys.exit(main())
-    #delete_gazebo_models()
