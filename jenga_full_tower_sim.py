@@ -265,8 +265,8 @@ def main():
 
     hover_distance = 0.1 # meters
     off = 0.32 # Vertical offset - original table sdf was 0.82 for base(0.04) + column(0.04) + surface(0.74)
-    trim = 0.002 # Trim - how close brick can go from gazebo to real world
-    z_shift = 0.001 # Adjust z-height for difference in brick width from sim to real world
+    gap = 0 # Gap - Distance between placed bricks (AT 0 GAP IS 0.08)
+    z_shift = 0 # Adjust z-height for difference in brick width from sim to real world
 
 
     ### ORIENTATIONS ###
@@ -283,7 +283,7 @@ def main():
 
     #----------------------------- x position ----- y position ---- z position -- quaternion
 
-    left_pose        = create_pose(0.5897,          0.3333,         0.3000 - off, quat1)
+    left_pose        = create_pose(0.5897,          0.3333,         0.3000 - off, quat2)
     right_pose       = create_pose(0.5797,         -0.3833,         0.2137 - off, quat1)
     brick_pose       = create_pose(0.5897,          0.3333,         0.8179 - off, None )
     pick_pose        = create_pose(0.5896,          0.3333,         0.1836 - off, quat2)
@@ -291,31 +291,29 @@ def main():
     place_pose = {} # Poses for placing each brick (1-12)
 
     place_pose["1"]  = create_pose(0.5896,               0.0,                0.1836 - off + z_shift, quat1)
-    place_pose["2"]  = create_pose(0.6596 - 1*trim,      0.0,                0.1836 - off + z_shift, quat1)
-    place_pose["3"]  = create_pose(0.7296 - 2*trim,      0.0,                0.1836 - off + z_shift, quat1)
+    place_pose["2"]  = create_pose(0.6596 + 1*gap,       0.0,                0.1836 - off + z_shift, quat1)
+    place_pose["3"]  = create_pose(0.7296 + 2*gap,       0.0,                0.1836 - off + z_shift, quat1)
 
-    place_pose["4"]  = create_pose(0.6596,              -0.067,              0.2700 - off + z_shift, quat2)
-    place_pose["5"]  = create_pose(0.6596,              -0.002 - 1*trim,     0.2700 - off + z_shift, quat2)
-    place_pose["6"]  = create_pose(0.6596,               0.063 - 2*trim,     0.2700 - off + z_shift, quat2)
+    place_pose["4"]  = create_pose(0.6596,              -0.07,              0.2696 - off + z_shift, quat2)
+    place_pose["5"]  = create_pose(0.6596,               0.0 + 1*gap,     0.2696 - off + z_shift, quat2)
+    place_pose["6"]  = create_pose(0.6596,               0.07 + 2*gap,     0.2696 - off + z_shift, quat2)
 
-    place_pose["7"]  = create_pose(0.5896,               0.0,                0.3570 - off + z_shift, quat1)
-    place_pose["8"]  = create_pose(0.6596 - 1*trim,      0.0,                0.3570 - off + z_shift, quat1)
-    place_pose["9"]  = create_pose(0.7296 - 2*trim,      0.0,                0.3570 - off + z_shift, quat1)
+    place_pose["7"]  = create_pose(0.5896,               0.0,                0.3556 - off + z_shift, quat1)
+    place_pose["8"]  = create_pose(0.6596 + 1*gap,       0.0,                0.3556 - off + z_shift, quat1)
+    place_pose["9"]  = create_pose(0.7296 + 2*gap,       0.0,                0.3556 - off + z_shift, quat1)
 
-    place_pose["10"] = create_pose(0.6596,              -0.067,              0.4440 - off + z_shift, quat2)
-    place_pose["11"] = create_pose(0.6596,              -0.002 - 1*trim,     0.4440 - off + z_shift, quat2)
-    place_pose["12"] = create_pose(0.6596,               0.063 - 2*trim,     0.4440 - off + z_shift, quat2)
+    place_pose["10"] = create_pose(0.6596,              -0.07,              0.4416 - off + z_shift, quat2)
+    place_pose["11"] = create_pose(0.6596,               0.0 + 1*gap,     0.4416 - off + z_shift, quat2)
+    place_pose["12"] = create_pose(0.6596,               0.07 + 2*gap,     0.4416 - off + z_shift, quat2)
 
     clear_pose = {} # Poses used to clear the tower for each layer (1-4)
     
-    clear_pose["1"]  = create_pose(0.8597,          0.3333,         0.284 - off,  quat2)
-    clear_pose["2"]  = create_pose(0.8597,          0.3333,         0.370 - off,  quat2)
-    clear_pose["3"]  = create_pose(0.8597,          0.3333,         0.456 - off,  quat2)
+    clear_pose["3"]  = create_pose(0.5897,          0.3333,         0.456 - off,  quat2)
     clear_pose["4"]  = create_pose(0.5897,          0.3333,         0.542 - off,  quat2)
 
     prep_pose = {} # Preparation poses used to help guide DE NIRO for the upper layers (3-4)
 
-    prep_pose["3"]   = create_pose(0.8597,          0.3333,         0.357 - off,  quat2)
+    prep_pose["3"]   = create_pose(0.5897,          0.3333,         0.357 - off,  quat2)
     prep_pose["4"]   = create_pose(0.5896,          0.3333,         0.444 - off,  quat2)
 
 
@@ -352,7 +350,7 @@ def main():
             left_pnp.place(place_pose[brick_id]) # Place brick on tower
             rospy.sleep(1.0) # For stability
 
-            if layer in [2, 3, 4]: left_pnp.move_to(left_pnp.ik_request(clear_pose[str(layer)]))  # Intermediate clear pose
+            if layer in [3, 4]: left_pnp.move_to(left_pnp.ik_request(clear_pose[str(layer)]))  # Intermediate clear pose
 
             left_pnp.move_to_start(left_pnp.ik_request(left_pose)) # Return to initial position
 
