@@ -105,7 +105,7 @@ class PickAndPlace(object):
     def _approach(self, pose, orientation_mode):
         approach = copy.deepcopy(pose)
         # approach with a pose the hover-distance above the requested pose
-        #num variable changes if the hover distance is in z or y
+        #orientation_mode changes if the hover distance is in z (top) or y (side)
         if orientation_mode == "top":
             approach.position.z = approach.position.z + self._hover_distance
             joint_angles = self.ik_request(approach)
@@ -285,22 +285,22 @@ def main():
     off = 0.32 # Vertical offset - original table sdf was 0.82 for base(0.04) + column(0.04) + surface(0.74)
     gap = 0 # Gap - Distance between placed bricks (AT 0 GAP IS 0.08)
     z_shift = 0 # Adjust z-height for difference in brick width from sim to real world
-
+    pi = 3.14159
 
     ### ORIENTATIONS ###
 
-    #----------------------------------------------- roll --- pitch -- yaw
+    #----------------------------------------------- roll -- pitch - yaw
 
     # This orientation matches that of 'tuck_arms.py -u'
-    quat1 = tf.transformations.quaternion_from_euler(3.14159, 0,      -3.14159)
+    quat1 = tf.transformations.quaternion_from_euler( pi,    0,     -pi)
     # rotate end-effector 90 degrees about z
-    quat2 = tf.transformations.quaternion_from_euler(3.14159, 0,      -1.57080)
+    quat2 = tf.transformations.quaternion_from_euler( pi,    0,     -pi/2)
     # rotate end-effector -90 degrees about x
-    quat3 = tf.transformations.quaternion_from_euler(-1.5708, 0,      -3.14159)
+    quat3 = tf.transformations.quaternion_from_euler(-pi/2,  0,     -pi)
     # rotate end-effector -90 degrees about y
-    quat4 = tf.transformations.quaternion_from_euler(-1.5708, -1.5708,-3.14159)
+    quat4 = tf.transformations.quaternion_from_euler(-pi/2, -pi/2,  -pi)
     # rotate end-effector 90 degrees about z (from quat4)
-    quat5 = tf.transformations.quaternion_from_euler(3.14159, -1.5708, 0)
+    quat5 = tf.transformations.quaternion_from_euler( pi,   -pi/2,   0)
 
 
     ### POSES ###
