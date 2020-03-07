@@ -130,7 +130,7 @@ class PickAndPlace(object):
     # Retracting arm by moving back to appropriated hover_distance
     # Here we are also retrieving the current pose of the end-effector
     def _retract(self, num):
-        # retrieve current pose from endpoint
+     # retrieve current pose from endpoint
         current_pose = self._limb.endpoint_pose()
         ik_pose = Pose()
         if num == 1:
@@ -147,6 +147,18 @@ class PickAndPlace(object):
         elif num == 2:
             ik_pose.position.x = current_pose['position'].x
             ik_pose.position.y = current_pose['position'].y + self._hover_distance
+            ik_pose.position.z = current_pose['position'].z
+            ik_pose.orientation.x = current_pose['orientation'].x
+            ik_pose.orientation.y = current_pose['orientation'].y
+            ik_pose.orientation.z = current_pose['orientation'].z
+            ik_pose.orientation.w = current_pose['orientation'].w
+            joint_angles = self.ik_request(ik_pose)
+            # servo up from current pose
+            self._guarded_move_to_joint_position(joint_angles)
+        # Used in real-life running for play move 2
+        elif num == 3: 
+            ik_pose.position.x = current_pose['position'].x
+            ik_pose.position.y = current_pose['position'].y + self._hover_distance + 0.05
             ik_pose.position.z = current_pose['position'].z
             ik_pose.orientation.x = current_pose['orientation'].x
             ik_pose.orientation.y = current_pose['orientation'].y
@@ -373,9 +385,9 @@ def main():
     place_pose["8"] = create_pose(0.6596 + x_shift_l3,         0.00 + 1*gap + y_shift_l3, 0.3556 - off + 3*z_shift, quat2)
     place_pose["9"] = create_pose(0.6596 + x_shift_l3,         0.07 + 2*gap + y_shift_l3, 0.3556 - off + 3*z_shift, quat2)
 
-    place_pose["10"]  = create_pose(0.5896 + x_shift_l4,         0.0 + y_shift_l4,          0.4416 - off, quat1)
-    place_pose["11"]  = create_pose(0.6596 + 1*gap + x_shift_l4, 0.0 + y_shift_l4,          0.4416 - off, quat1)
-    place_pose["12"]  = create_pose(0.7296 + 2*gap + x_shift_l4, 0.0 + y_shift_l4,          0.4416 - off, quat1)
+    place_pose["10"]  = create_pose(0.5896 + x_shift_l4,         0.0 + y_shift_l4,          0.4416 - off + 4*z_shift, quat1)
+    place_pose["11"]  = create_pose(0.6596 + 1*gap + x_shift_l4, 0.0 + y_shift_l4,          0.4416 - off + 4*z_shift, quat1)
+    place_pose["12"]  = create_pose(0.7296 + 2*gap + x_shift_l4, 0.0 + y_shift_l4,          0.4416 - off + 4*z_shift, quat1)
 
     clear_pose = {} # Poses used to clear the tower for each layer (1-4)
     
