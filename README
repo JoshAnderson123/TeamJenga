@@ -1,6 +1,6 @@
-Team Jenga
+# Team Jenga
 
-class PickAndPlace(object):
+### class PickAndPlace(object):
     
 The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace object is initialised with a single limb that it can control.
 
@@ -21,7 +21,7 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
    
     
 
-def __init__(self, limb, hover_distance = 0.10, verbose=True):
+### def __init__(self, limb, hover_distance = 0.10, verbose=True):
         
             Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
 
@@ -33,7 +33,7 @@ def __init__(self, limb, hover_distance = 0.10, verbose=True):
 
 
 
-def move_to_start(self, start_angles=None):
+### def move_to_start(self, start_angles=None):
     
             Moves the PickAndPlace object's limb to the starting pose.
 
@@ -43,7 +43,7 @@ def move_to_start(self, start_angles=None):
  
 
     
-def ik_request(self, pose):
+### def ik_request(self, pose):
 
             Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
 
@@ -61,26 +61,22 @@ def ik_request(self, pose):
                 Inavlid pose - pose outside the robots dexterous workspace
   
 
-
-    def _guarded_move_to_joint_position(self, joint_angles):
+### def _guarded_move_to_joint_position(self, joint_angles):
         
             Moves the PickAndPlace object's limb to the pose with the specified joint_angles
         
 
-
-    def gripper_open(self):
+### def gripper_open(self):
         
             Opens the PickAndPlace object's gripper
         
 
-
-    def gripper_close(self):
+### def gripper_close(self):
         
             Closes the PickAndPlace object's gripper
         
 
-
-    def _approach(self, pose, num):
+### def _approach(self, pose, num):
         
             Moves the PickAndPlace object's limb to the specified pose, with the
             hover_distance offset applied to the z-axis.
@@ -93,7 +89,7 @@ def ik_request(self, pose):
         
 
 
-    def _retract(self, num):
+### def _retract(self, num):
         
             Retracts the PickAndPlace object's limb by the objects global hover distance
 
@@ -104,13 +100,13 @@ def ik_request(self, pose):
         
 
 
-    def _servo_to_pose(self, pose):
+### def _servo_to_pose(self, pose):
         
             Moves the PickAndPlace object's limb to the specified pose
         
 
 
-    def pick(self, pose, num=1, toggle=1):
+### def pick(self, pose, num=1, toggle=1):
         
             Picks up a brick in the specified location
 
@@ -122,7 +118,7 @@ def ik_request(self, pose):
                 toggle - toggles if the gripper initially opens or not
         
 
-    def place(self, pose, num=1):
+### def place(self, pose, num=1):
         
             Places a brick in the specified location
 
@@ -134,7 +130,7 @@ def ik_request(self, pose):
         
 
 
-    def move_to(self, joint_angles):
+### def move_to(self, joint_angles):
         
             Moves the PickAndPlace objects limb to the location specified by the joint angles
 
@@ -147,7 +143,7 @@ def ik_request(self, pose):
 ### GAZEBO MODEL FUNCTIONS ###
 
 
-def spawn_gazebo_table(table_pose=Pose(position=Point(x=0.95, y=0.0, z=0.0)),
+### def spawn_gazebo_table(table_pose=Pose(position=Point(x=0.95, y=0.0, z=0.0)),
                        table_reference_frame="world"):
    
         Loads and Spawns table in the Gazebo siulator
@@ -163,7 +159,7 @@ def spawn_gazebo_table(table_pose=Pose(position=Point(x=0.95, y=0.0, z=0.0)),
     
 
 
-def spawn_gazebo_brick(brick_pose, brick_id):
+### def spawn_gazebo_brick(brick_pose, brick_id):
     
         Spawns a brick with a predefined pose
 
@@ -174,19 +170,19 @@ def spawn_gazebo_brick(brick_pose, brick_id):
     
 
 
-def delete_gazebo_models():
+### def delete_gazebo_models():
    
         Deletes all models from the Gazebo simulator.
     
 
 
-def calc_brick_id(layer, brick):
+### def calc_brick_id(layer, brick):
     
         Creates a unique identifier for each brick based of it's layer and brick position in that layer
     
 
 
-def create_pose(pos_x, pos_y, pos_z, quat):
+### def create_pose(pos_x, pos_y, pos_z, quat):
    
         Creates and returns a ROS Pose based on position and rotation parameters.
 
@@ -197,7 +193,7 @@ def create_pose(pos_x, pos_y, pos_z, quat):
     
 
 
-def ik_robust(pnp_object, pose):
+### def ik_robust(pnp_object, pose):
     
         Robust wrapper for PickAndPlace.ik_request(). Allows multiple attemps to find an IK solution,
         since ik_request() has a 1.5% chance of returning an Invalid Pose error even though the pose
@@ -212,7 +208,7 @@ def ik_robust(pnp_object, pose):
 
 ### MAIN FUNCTION ###
 
-def main():
+### def main():
     
         DE NIRO plays Jenga! There are four sequences which can be toggled on and off:
 
