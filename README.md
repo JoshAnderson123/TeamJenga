@@ -1,35 +1,43 @@
 # Team Jenga
 
+Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the DE NIRO robot to build a Jenga tower and play two moves have to
+
+#### Project Members:
+ * Marcus Melconian
+ * Ben Collis
+ * Hannah Qureshi
+ * Puja Soneji
+ * Joshua Anderson
+ * Bettina Sosa
+
 ### class PickAndPlace(object):
     
 The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace object is initialised with a single limb that it can control.
 
-     Methods:
+##### Methods:
 
-            __init__()
-            move_to_start()
-            ik_request()
-            _guarded_move_to_joint_position()
-            gripper_open()
-            gripper_close()
-            _approach()
-            _retract()
-            _servo_to_pose()
-            pick()
-            place()
-            move_to()
-   
-    
+* \_\_init\_\_()
+* move_to_start()
+* ik_request()
+* \_guarded_move_to_joint_position()
+* gripper_open()
+* gripper_close()
+* \_approach()
+* \_retract()
+* \_servo_to_pose()
+* pick()
+* place()
+* move\_to()
 
-### def __init__(self, limb, hover_distance = 0.10, verbose=True):
+### def __init__(self, limb, hover_distance, verbose):
         
-            Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
+Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
 
-            Parameters:
+Parameters:
 
-                limb - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
-                hover_distance - the distance (in meters) at which the end effector hovers above the desired position. 
-                verbose - provides additional information to the console if set to True
+* limb (String) - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
+* hover_distance (float) - the distance (in meters) at which the end effector hovers above the desired position. 
+* verbose (Bool) - provides additional information to the console if set to True
 
 
 
