@@ -35,7 +35,7 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
 
 
 
-### def __init__(self, limb, hover_distance, verbose):
+### PickAndPlace.__init__(self, limb, hover_distance, verbose):
         
 Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
 
@@ -47,7 +47,7 @@ Initialises a PickAndPlace object. Each PickAndPlace object can control one limb
 
 
 
-### def move_to_start(self, start_angles=None):
+### PickAndPlace.move_to_start(self, start_angles=None):
     
 Moves the PickAndPlace object's limb to the starting pose.
 
@@ -56,7 +56,7 @@ Moves the PickAndPlace object's limb to the starting pose.
  
  
     
-### def ik_request(self, pose):
+### PickAndPlace.ik_request(self, pose):
 
 Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
 
@@ -74,22 +74,22 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
         Inavlid pose - pose outside the robots dexterous workspace
   
 
-### def _guarded_move_to_joint_position(self, joint_angles):
+### PickAndPlace._guarded_move_to_joint_position(self, joint_angles):
         
             Moves the PickAndPlace object's limb to the pose with the specified joint_angles
         
 
-### def gripper_open(self):
+### PickAndPlace.gripper_open(self):
         
             Opens the PickAndPlace object's gripper
         
 
-### def gripper_close(self):
+### PickAndPlace.gripper_close(self):
         
             Closes the PickAndPlace object's gripper
         
 
-### def _approach(self, pose, num):
+### PickAndPlace._approach(self, pose, num):
         
             Moves the PickAndPlace object's limb to the specified pose, with the
             hover_distance offset applied to the z-axis.
@@ -102,7 +102,7 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
         
 
 
-### def _retract(self, num):
+### PickAndPlace._retract(self, num):
         
             Retracts the PickAndPlace object's limb by the objects global hover distance
 
@@ -113,13 +113,13 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
         
 
 
-### def _servo_to_pose(self, pose):
+### PickAndPlace._servo_to_pose(self, pose):
         
             Moves the PickAndPlace object's limb to the specified pose
         
 
 
-### def pick(self, pose, num=1, toggle=1):
+### PickAndPlace.pick(self, pose, num=1, toggle=1):
         
             Picks up a brick in the specified location
 
@@ -131,7 +131,7 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
                 toggle - toggles if the gripper initially opens or not
         
 
-### def place(self, pose, num=1):
+### PickAndPlace.place(self, pose, num=1):
         
             Places a brick in the specified location
 
@@ -143,7 +143,7 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
         
 
 
-### def move_to(self, joint_angles):
+### PickAndPlace.move_to(self, joint_angles):
         
             Moves the PickAndPlace objects limb to the location specified by the joint angles
 
