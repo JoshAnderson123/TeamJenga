@@ -1,6 +1,8 @@
 # Team Jenga
 
-Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the DE NIRO robot to build a Jenga tower and play two moves have to
+Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the DE NIRO robot to build a Jenga tower and play two moves against a human player. This documentation provides class and function descriptions for the code we used in this project, which can be found in _jenga_newstrat_original_sim_3.py_:
+
+https://github.com/JoshAnderson123/TeamJenga/blob/master/jenga_newstrat_original_sim_3.py
 
 #### Project Members:
  * Marcus Melconian
@@ -10,7 +12,9 @@ Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the 
  * Joshua Anderson
  * Bettina Sosa
 
-### class PickAndPlace(object):
+
+
+## class PickAndPlace(object):
     
 The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace object is initialised with a single limb that it can control.
 
@@ -29,6 +33,8 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
 * place()
 * move\_to()
 
+
+
 ### def __init__(self, limb, hover_distance, verbose):
         
 Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
@@ -43,30 +49,29 @@ Parameters:
 
 ### def move_to_start(self, start_angles=None):
     
-            Moves the PickAndPlace object's limb to the starting pose.
+    Moves the PickAndPlace object's limb to the starting pose.
 
-            Parameters:
-
-                start_angles - the set of joint angles that make the starting pose.
+    Parameters:
+        start_angles - the set of joint angles that make the starting pose.
  
-
+ 
     
 ### def ik_request(self, pose):
 
-            Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
+    Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
 
-            Parameters:
+    Parameters:
 
-                pose - the desired end-effector pose
+        pose - the desired end-effector pose
 
-            Returns:
+    Returns:
 
-                [float] - a list of joint angles to achieve the desired end-effector pose
+        [float] - a list of joint angles to achieve the desired end-effector pose
 
-            Exceptions:
+    Exceptions:
 
-                Service call failed - could not communicate with ROS service
-                Inavlid pose - pose outside the robots dexterous workspace
+        Service call failed - could not communicate with ROS service
+        Inavlid pose - pose outside the robots dexterous workspace
   
 
 ### def _guarded_move_to_joint_position(self, joint_angles):
