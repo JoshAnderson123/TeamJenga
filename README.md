@@ -39,7 +39,7 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
         
 Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
 
-Parameters:
+##### Parameters:
 
 * limb (String) - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
 * hover_distance (float) - the distance (in meters) at which the end effector hovers above the desired position. 
@@ -49,7 +49,7 @@ Parameters:
 
 ### def move_to_start(self, start_angles=None):
     
-    Moves the PickAndPlace object's limb to the starting pose.
+Moves the PickAndPlace object's limb to the starting pose.
 
     Parameters:
         start_angles - the set of joint angles that make the starting pose.
@@ -58,7 +58,7 @@ Parameters:
     
 ### def ik_request(self, pose):
 
-    Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
+Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
 
     Parameters:
 
