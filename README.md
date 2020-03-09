@@ -20,10 +20,10 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
 
 ##### Methods:
 
-* \_\_init\_\_()
-* move_to_start()
-* ik_request()
-* \_guarded_move_to_joint_position()
+* `\_\_init\_\_()`
+* `move_to_start()`
+* `ik_request()`
+* `\_guarded_move_to_joint_position()`
 * gripper_open()
 * gripper_close()
 * \_approach()
@@ -41,13 +41,13 @@ Initialises a PickAndPlace object. Each PickAndPlace object can control one limb
 
 ##### Parameters:
 
-* limb (String) - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
-* hover_distance (float) - the distance (in meters) at which the end effector hovers above the desired position. 
-* verbose (Bool) - provides additional information to the console if set to True
+* `limb (String)` - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
+* `hover_distance (float)` - the distance (in meters) at which the end effector hovers above the desired position. 
+* `verbose (Bool)` - provides additional information to the console if set to True
 
 
 
-### PickAndPlace.move_to_start(self, start_angles=None):
+#### PickAndPlace.move_to_start(self, start_angles=None):
     
 Moves the PickAndPlace object's limb to the starting pose.
 
@@ -56,7 +56,7 @@ Moves the PickAndPlace object's limb to the starting pose.
  
  
     
-### PickAndPlace.ik_request(self, pose):
+#### PickAndPlace.ik_request(self, pose):
 
 Uses Inverse Kinematics to return the joint angles for a specified end-effector pose
 
@@ -74,22 +74,22 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
         Inavlid pose - pose outside the robots dexterous workspace
   
 
-### PickAndPlace._guarded_move_to_joint_position(self, joint_angles):
+#### PickAndPlace._guarded_move_to_joint_position(self, joint_angles):
         
             Moves the PickAndPlace object's limb to the pose with the specified joint_angles
         
 
-### PickAndPlace.gripper_open(self):
+#### PickAndPlace.gripper_open(self):
         
             Opens the PickAndPlace object's gripper
         
 
-### PickAndPlace.gripper_close(self):
+#### PickAndPlace.gripper_close(self):
         
             Closes the PickAndPlace object's gripper
         
 
-### PickAndPlace._approach(self, pose, num):
+#### PickAndPlace._approach(self, pose, num):
         
             Moves the PickAndPlace object's limb to the specified pose, with the
             hover_distance offset applied to the z-axis.
