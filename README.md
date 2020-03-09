@@ -20,18 +20,18 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
 
 ##### Methods:
 
-* `\_\_init\_\_()`
+* `__init__()`
 * `move_to_start()`
 * `ik_request()`
-* `\_guarded_move_to_joint_position()`
-* gripper_open()
-* gripper_close()
-* \_approach()
-* \_retract()
-* \_servo_to_pose()
-* pick()
-* place()
-* move\_to()
+* `_guarded_move_to_joint_position()`
+* `gripper_open()`
+* `gripper_close()`
+* `_approach()`
+* `_retract()`
+* `_servo_to_pose()`
+* `pick()`
+* `place()`
+* `move_to()`
 
 
 
@@ -41,9 +41,9 @@ Initialises a PickAndPlace object. Each PickAndPlace object can control one limb
 
 ##### Parameters:
 
-* `limb (String)` - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
-* `hover_distance (float)` - the distance (in meters) at which the end effector hovers above the desired position. 
-* `verbose (Bool)` - provides additional information to the console if set to True
+* `limb` _(String)_ - which limb you want to control. 'left' is for the left arm and 'right' is for the right arm
+* `hover_distance` _(float)_ - the distance (in meters) at which the end effector hovers above the desired position. 
+* `verbose` _(Bool)_ - provides additional information to the console if set to True
 
 
 
