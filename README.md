@@ -35,7 +35,7 @@ The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace obje
 
 <br>
 
-### PickAndPlace.__init__(self, limb, hover_distance, verbose):
+### PickAndPlace.\_\_init\_\_(self, limb, hover_distance, verbose):
         
 Initialises a PickAndPlace object. Each PickAndPlace object can control one limb. 
 
@@ -79,7 +79,11 @@ Uses Inverse Kinematics to return the joint angles for a specified end-effector 
 ### PickAndPlace._guarded_move_to_joint_position(self, joint_angles):
         
 Moves the PickAndPlace object's limb to the pose with the specified joint_angles
-     
+
+##### Parameters:
+
+* `joint_angles` _[Float]_ - the joint angles for the desired end-effector pose
+
 <br>
 
 ### PickAndPlace.gripper_open(self):
@@ -118,6 +122,10 @@ Parameters:
 ### PickAndPlace._servo_to_pose(self, pose):
         
 Moves the PickAndPlace object's limb to the specified pose
+
+##### Parameters:
+
+* `pose` _geometry_msgs.msg.Pose_ - the desired end-effector pose
         
 <br>
 
@@ -190,6 +198,11 @@ Deletes all models from the Gazebo simulator.
     
 Creates a unique identifier for each brick based of it's layer and brick position in that layer
 
+##### Parameters:
+
+* `layer` _Int_ - the layer that the brick resides in
+* `brick` _Int_ - the position of the brick within the layer
+
 <br>
 
 ### create_pose(pos_x, pos_y, pos_z, quat):
@@ -218,7 +231,7 @@ Parameters:
     
 DE NIRO plays Jenga! There are four sequences which can be toggled on and off:
 
-1 - Calibration
-2 - Building Jenga Tower
-3 - DE NIRO move 1
-4 - DE NIRO move 2
+1 - Calibration <br>
+2 - Building Jenga Tower <br>
+3 - DE NIRO move 1 <br>
+4 - DE NIRO move 2 <br>
