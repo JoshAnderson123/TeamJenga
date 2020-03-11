@@ -113,7 +113,7 @@ Moves the PickAndPlace object's limb to the specified pose, with the hover_dista
         
 Retracts the PickAndPlace object's limb by the objects global hover distance
 
-Parameters:
+##### Parameters:
 
 * `num` _Int_ - the approach configuration number (From 1-5). This changes what axis the hover_distance is applied to
         
@@ -133,7 +133,7 @@ Moves the PickAndPlace object's limb to the specified pose
         
 Picks up a brick in the specified location
 
-Parameters:
+##### Parameters:
 
 * `pose` _geometry_msgs.msg.Pose_ - the end-effector location to pick the brick
 * `num` _Int_ - the approach configuration number (From 1-5). This changes what axis the hover_distance is applied to
@@ -145,7 +145,7 @@ Parameters:
         
 Places a brick in the specified location
 
-Parameters:
+##### Parameters:
 
 * `pose` _geometry_msgs.msg.Pose_ - the end-effector location to pick the brick
 * `num` _Int_ - the approach configuration number (From 1-5). This changes what axis the hover_distance is applied to
@@ -156,7 +156,7 @@ Parameters:
         
 Moves the PickAndPlace objects limb to the location specified by the joint angles
 
-Parameters:
+##### Parameters:
 
 * `joint_angles` _[Float]_ - the set of joint angles for the requested pose
        
@@ -166,12 +166,12 @@ Parameters:
    
 Loads and Spawns table in the Gazebo siulator
 
-Parameters:
+##### Parameters:
 
 * `table_pose` _geometry_msgs.msg.Pose_ - the position of the table
 * `table_reference_frame` _String_ - the reference frame for the table
 
-Exceptions:
+##### Exceptions:
 
 * `ServiceException` - unable to call service
 
@@ -181,7 +181,7 @@ Exceptions:
     
 Spawns a brick with a predefined pose
 
-Parameters:
+##### Parameters:
 
 * `brick_pose` _geometry_msgs.msg.Quaternion_ - the pose to spawn the brick
 * `brick_id` _Int_ - the unique identifier for the brick
@@ -209,7 +209,7 @@ Creates a unique identifier for each brick based of it's layer and brick positio
    
 Creates and returns a ROS Pose based on position and rotation parameters.
 
-Parameters:
+##### Parameters:
 
 * `pos_x`, `pos_y`, `pos_z` _Int_ - x, y, z components of requested position (in meters)
 * `quat` _geometry_msgs.msg.Pose_ - quaternion representation of requested orientation
@@ -220,7 +220,7 @@ Parameters:
     
 Robust wrapper for PickAndPlace.ik_request(). Allows multiple attemps to find an IK solution, since ik_request() has a 1.5% chance of returning an Invalid Pose error even though the pose is valid.
 
-Parameters:
+##### Parameters:
 
 * `pnp_object` _PickAndPlace_ - the PickAndPlace object to apply robust wrapper to
 * `pose` _geometry_msgs.msg.Pose_ - the desired end-effector pose
