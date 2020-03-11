@@ -14,6 +14,23 @@ https://github.com/JoshAnderson123/TeamJenga/blob/master/jenga_newstrat_original
 
 <br>
 
+## Package Dependencies
+
+* `argparse`
+* `struct`
+* `sys`
+* `copy`
+* `rospy`
+* `rospkg`
+* `gazebo_msgs`
+* `geometry_msgs`
+* `std_msgs`
+* `baxter_core_msgs`
+* `baxter_interface`
+* `tf`
+
+<br>
+
 ## class PickAndPlace(object):
     
 The PickAndPlace class enables DE NIRO to move his limbs. Each PickAndPlace object is initialised with a single limb that it can control.
@@ -162,6 +179,11 @@ Moves the PickAndPlace objects limb to the location specified by the joint angle
        
 <br>
 
+
+## Gazebo Functions
+
+<br>
+
 ### spawn_gazebo_table(table_pose, table_reference_frame):
    
 Loads and Spawns table in the Gazebo siulator
@@ -191,6 +213,10 @@ Spawns a brick with a predefined pose
 ### delete_gazebo_models():
    
 Deletes all models from the Gazebo simulator.
+
+<br>
+
+## Action Sequence Functions
 
 <br>
 
