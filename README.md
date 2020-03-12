@@ -1,8 +1,8 @@
 # Team Jenga
 
-Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the DE NIRO robot to build a Jenga tower and play two moves against a human player. This documentation provides class and function descriptions for the code we used in this project, which can be found in _jenga_newstrat_original_sim_3.py_:
+Design Engineering 2019/2020 Robotics Group Project. Our mission was to use the DE NIRO robot to build a Jenga tower and play two moves against a human player. This documentation provides class and function descriptions for the code we used in this project, which can be found in _jenga_final.py_:
 
-https://github.com/JoshAnderson123/TeamJenga/blob/master/jenga_newstrat_original_sim_3.py
+https://github.com/JoshAnderson123/TeamJenga/blob/master/final_code/jenga_final.py
 
 #### Project Members:
  * Marcus Melconian
